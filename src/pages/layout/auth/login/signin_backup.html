@@ -1,0 +1,64 @@
+
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="light"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background"  fullscreen >
+
+  <!--########### Logo ###########-->
+  <div class="logoHeader">
+    <img src="../../../../assets/medium_150.70391061453px_1202562_easyicon.net.png"/>
+  </div>
+
+	<ion-card>
+		<ion-card-content>
+      <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+        <ion-list no-line>
+
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input color="light" #email type="email" placeholder="Your email address"
+                      formControlName="email"                         
+                      (change)="elementChanged(email)"    
+                      [class.invalid]="!loginForm.controls.email.valid &&loginForm.controls.email.dirty">
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input #password type="password" placeholder="Your email address"
+                  formControlName="password"         
+                  (click)="goToResetPassword()"        
+                  [class.invalid]="!loginForm.controls.password.valid &&loginForm.controls.password.dirty">
+                </ion-input>
+            </ion-item>
+
+
+            <ion-item class="error-message">
+              <p  *ngIf="!loginForm.controls.email.valid  &&
+              loginForm.controls.email.dirty">*Please enter a valid email.</p>
+              <p *ngIf="!loginForm.controls.password.valid  &&
+              loginForm.controls.password.dirty">*Your password needs more than 6 characters.</p>
+            </ion-item>
+
+          <!--<a (click)="goToResetPassword()">Forgot your login detail? <b>Get help signing in</b></a>-->
+            <div class="submitBox">
+                <button ion-button block type="submit"  color="blue2" (click)="loginUser()">Log in</button>
+                <!--<p>OR</p>-->
+                <div class="spacer"></div>
+                <button ion-button block color="light"  outline (click)="createAccount()">
+                  <ion-icon name="ios-create"></ion-icon> Create new account
+                </button>
+            </div>
+        </ion-list>
+      </form>
+		</ion-card-content>
+	</ion-card>
+
+	<button class="bottom" ion-button clear full color="light" (click)="goToResetPassword()">Forgot your password? </button>
+</ion-content>

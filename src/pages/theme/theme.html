@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar   [color]="color" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Theme</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+</ion-navbar>
+
+  <ion-toolbar no-border-top  [color]="color">
+    <ion-segment [(ngModel)]="themeView" color="light">
+      <ion-segment-button value="md">
+        material design
+      </ion-segment-button>
+      <ion-segment-button value="ios">
+        ios
+      </ion-segment-button>
+      <ion-segment-button value="ionic">
+        ionic
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<div *ngIf="themeView==='md'">
+    <ion-list>
+      <ion-item tappable  *ngFor="let mdColor of mdColor " (click)="changeColor(mdColor.colorName)" >
+        <button ion-button color="{{mdColor.colorName}}" item-left >#{{mdColor.colorCode}}</button>
+        <h2>Usage: color="{{mdColor.colorName}}"</h2>
+      </ion-item>
+    </ion-list>
+</div>
+
+<div *ngIf="themeView==='ios'">
+    <ion-list>
+      <ion-item tappable  *ngFor="let iosColor of iosColor" (click)="changeColor(iosColor.colorName)">
+        <button ion-button color="{{iosColor.colorName}}" item-left >#{{iosColor.colorCode}}</button>
+        <h2>Usage: color="{{iosColor.colorName}}"</h2>
+      </ion-item>
+    </ion-list>
+</div>
+
+<div *ngIf="themeView==='ionic'">
+    <ion-list>
+      <ion-item tappable *ngFor="let miscColor of miscColor" (click)="changeColor(miscColor.colorName)">
+        <button ion-button color="{{miscColor.colorName}}" item-left >#{{miscColor.colorCode}}</button>
+        <h2>Usage: color="{{miscColor.colorName}}"</h2>
+      </ion-item>
+    </ion-list>
+</div>
+
+</ion-content>
+
