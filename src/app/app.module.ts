@@ -20,8 +20,8 @@ import { RadioPlayer } from '../providers/radio-service';
 
 
 //*********** Image Gallery **************/
-import { GalleryModal } from 'ionic-gallery-modal';
-import { ZoomableImage } from 'ionic-gallery-modal';
+import { GalleryModal, ZoomableImage } from 'ionic-gallery-modal';
+//import { ZoomableImage } from 'ionic-gallery-modal';
 
 
 //********** firebase configuration  ************ */
@@ -49,12 +49,14 @@ import { ZoomableImage } from 'ionic-gallery-modal';
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule // imports firebase/auth, only needed for auth features
+   
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     GalleryModal,
-    ZoomableImage,
+    ZoomableImage
   ],
   providers: [
     StatusBar,
