@@ -20,8 +20,12 @@ import { RadioPlayer } from '../providers/radio-service';
 
 
 //*********** Image Gallery **************/
-import { GalleryModal, ZoomableImage } from 'ionic-gallery-modal';
+import {  HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import * as ionicGalleryModal from 'ionic-gallery-modal';
+//import { GalleryModal, ZoomableImage } from 'ionic-gallery-modal';
 //import { ZoomableImage } from 'ionic-gallery-modal';
+
+
 
 
 //********** firebase configuration  ************ */
@@ -38,9 +42,9 @@ import { GalleryModal, ZoomableImage } from 'ionic-gallery-modal';
   
 @NgModule({
   declarations: [
-    MyApp, 
-    GalleryModal,
-    ZoomableImage,
+    MyApp 
+    //GalleryModal,
+    //ZoomableImage,
 
   ],
   imports: [
@@ -48,15 +52,16 @@ import { GalleryModal, ZoomableImage } from 'ionic-gallery-modal';
     IonicModule.forRoot(MyApp),    
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    ionicGalleryModal.GalleryModalModule,
    
     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    GalleryModal,
-    ZoomableImage
+    MyApp
+    //GalleryModal,
+    //ZoomableImage
   ],
   providers: [
     StatusBar,
@@ -64,7 +69,11 @@ import { GalleryModal, ZoomableImage } from 'ionic-gallery-modal';
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthData,
-    RadioPlayer
+    RadioPlayer,
+    {
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: ionicGalleryModal.GalleryModalHammerConfig,
+  }
   ]
 })
 export class AppModule {}

@@ -5,7 +5,7 @@ import { AngularFireDatabase , FirebaseListObservable} from 'angularfire2/databa
 
 //*********** Import image gallery **************//
 import { GalleryModal } from 'ionic-gallery-modal';
-import { ZoomableImage } from 'ionic-gallery-modal';
+//import { ZoomableImage } from 'ionic-gallery-modal';
 
 @IonicPage()
 @Component({
